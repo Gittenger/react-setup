@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 
-import { cssIndex } from '../../styles/css/utils.styles.js'
+import { cssIndex, device } from '../../styles/css/utils.styles.js'
+
+const { tabletMM } = device
 
 export const BackgroundContainer = styled.div`
 	position: relative;
@@ -24,4 +26,9 @@ export const ContentContainer = styled.div`
 	flex-direction: column;
 	background: none;
 	padding-bottom: 15rem;
+	margin-top: var(--titleHeight);
+
+	${tabletMM} {
+		min-height: 99vh;
+	}
 `
