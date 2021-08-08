@@ -6,10 +6,11 @@ const { tabletS, mobileMM } = device
 
 export const NavContainer = styled.div`
 	position: fixed;
-	background: none;
+	background: var(--black);
 	bottom: 0;
+	left: 0;
 	z-index: 300;
-	width: 98.5vw;
+	width: 100%;
 	${cssIndex.flexCenter};
 	transition: transform 0.3s;
 

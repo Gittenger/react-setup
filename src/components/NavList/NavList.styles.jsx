@@ -4,20 +4,24 @@ import { cssIndex, device } from '../../styles/css/utils.styles.js'
 
 import { navStyles } from '../typography/typography.components.js'
 
-const { tabletS } = device
+const { tabletS, tabletMM } = device
 
 export const NavListContainer = styled.ul`
 	${navStyles}
 	${cssIndex.flexCenter}
-	flex-direction: column;
 
-	li:not(:last-child) {
-		margin-bottom: var(--m-S);
+	li {
+		margin-right: 2rem;
 	}
 
 	a {
 		position: relative;
 		transition: color -1px.3s, text-shadow 0.3s;
+
+		&:link,
+		&:visited {
+			color: var(--black);
+		}
 	}
 
 	a:hover {
@@ -38,9 +42,20 @@ export const NavListContainer = styled.ul`
 		background: var(--main);
 	}
 
+	${tabletMM} {
+		a:link,
+		a:visited {
+			color: var(--white);
+		}
+	}
+
 	${tabletS} {
 		a.active-page .nav-underline {
 			display: none;
+		}
+
+		li {
+			margin-right: 0;
 		}
 	}
 `
