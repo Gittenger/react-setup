@@ -9,6 +9,10 @@ export const PortfolioPageContainer = styled.div`
   ${cssIndex.flexCenterCol}
   color: black;
   margin-bottom: 9rem;
+
+  ${tabletMM} {
+    padding-top: 3rem;
+  }
 `
 
 export const StyledCarousel = styled(Carousel)`
