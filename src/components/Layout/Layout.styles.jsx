@@ -17,11 +17,9 @@ export const BackgroundContainer = styled.div`
 `
 
 export const ContentContainer = styled.div`
-	width: calc(100vw - var(--navWidth));
+	width: 100%;
 	min-height: 95vh;
-	margin-left: var(--navWidth);
 	margin-right: 0;
-	margin-top: var(--titleHeight);
 	${cssIndex.flexCenter}
 	flex-direction: column;
 	background: none;
