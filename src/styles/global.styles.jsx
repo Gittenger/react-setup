@@ -18,6 +18,7 @@ body {
 
 #root {
 	${({ theme: { css } }) => css.flexCenterCol};
+  min-width: 80vw;
     
     /* set font vars in root */
     ${({ theme: { typography } }) => typography.fontVars.fontMain};
