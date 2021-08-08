@@ -15,6 +15,7 @@ export const FooterContainer = styled.footer`
 	width: 100%;
 	min-height: var(--footerHeight);
 	border-radius: var(--bRadSm);
+	padding-bottom: 1rem;
 `
 
 export const Copyright = styled.div`
