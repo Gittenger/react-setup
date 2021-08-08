@@ -46,6 +46,10 @@ export const NavListContainer = styled.ul`
 		a:link,
 		a:visited {
 			color: var(--white);
+
+			&:hover {
+				color: var(--main);
+			}
 		}
 	}
 
