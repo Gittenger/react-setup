@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { CIndex } from '../components.index.js'
 import axios from 'axios'
-import { API } from '../../env.js'
 
 import {
 	ContactFormContainer,
@@ -27,7 +26,7 @@ const ContactForm = () => {
 
 	const { name, email, desc, phone, sendCopy } = formData
 
-	const handleInputChange = (e) => {
+	const handleInputChange = e => {
 		if (e.target.name === 'sendCopy') {
 			setFormData({ ...formData, sendCopy: !sendCopy })
 		} else {
@@ -64,7 +63,7 @@ const ContactForm = () => {
 		}
 	}
 
-	const handleSubmitForm = (e) => {
+	const handleSubmitForm = e => {
 		e.preventDefault()
 
 		const validated = performValidation()
@@ -72,12 +71,12 @@ const ContactForm = () => {
 		if (validated) {
 			axios({
 				method: 'POST',
-				url: `${API}/contact/sendEmail`,
+				url: `${process.env.REACT_APP_API}/contact/sendEmail`,
 				data: {
 					...formData,
 				},
 			}).then(
-				(res) => {
+				res => {
 					// console.log(res)
 					setFormData({
 						name: '',
@@ -88,7 +87,7 @@ const ContactForm = () => {
 					})
 					setError('')
 				},
-				(err) => {
+				err => {
 					setFormData({
 						name: '',
 						email: '',
@@ -112,8 +111,8 @@ const ContactForm = () => {
 			<H2>Contact Us:</H2>
 			<ContactFormForm onSubmit={handleSubmitForm}>
 				<FormInstructions>
-					Fill out this form with a brief description of what you'd like to book
-					us for, and we'll reach out to you for further details!
+					Fill out this form with a brief description of what you'd like to book us
+					for, and we'll reach out to you for further details!
 				</FormInstructions>
 				<Row>
 					<label htmlFor="email">Your email:</label>
@@ -135,21 +134,11 @@ const ContactForm = () => {
 				</Row>
 				<Row>
 					<label htmlFor="name">Name:</label>
-					<input
-						onChange={handleInputChange}
-						type="text"
-						name="name"
-						value={name}
-					/>
+					<input onChange={handleInputChange} type="text" name="name" value={name} />
 				</Row>
 				<Row>
 					<label htmlFor="desc">Event description:</label>
-					<textarea
-						rows="4"
-						onChange={handleInputChange}
-						name="desc"
-						value={desc}
-					/>
+					<textarea rows="4" onChange={handleInputChange} name="desc" value={desc} />
 				</Row>
 				<Checkbox
 					handleInputChange={handleInputChange}

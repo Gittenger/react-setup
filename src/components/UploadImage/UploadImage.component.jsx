@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 import { UploadImageContainer } from './UploadImage.styles'
 import auth from '../../utils/auth.js'
 import CIndex from '../components.index.js'
-import { API } from '../../env.js'
 
 const { checkAuthToken } = auth
 
@@ -15,26 +14,26 @@ const UploadImage = () => {
 	const { token } = checkAuthToken()
 	const [selectedFile, setSelectedFile] = useState(null)
 
-	const handleSubmit = (e) => {
+	const handleSubmit = e => {
 		e.preventDefault()
 		const formData = new FormData()
 		formData.append('image', selectedFile)
 
-		fetch(`${API}/images/upload`, {
+		fetch(`${process.env.REACT_APP_API}/images/upload`, {
 			method: 'POST',
 			headers: {
 				Authorization: `Bearer ${token}`,
 			},
 			body: formData,
 		})
-			.then((res) => res.json())
+			.then(res => res.json())
 			.then(() => {
 				window.location.reload()
 			})
-			.catch((err) => console.error(err))
+			.catch(err => console.error(err))
 	}
 
-	const handleChange = (e) => {
+	const handleChange = e => {
 		setSelectedFile(e.target.files[0])
 	}
 

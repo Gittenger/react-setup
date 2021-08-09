@@ -5,7 +5,6 @@ import { FooterContainer, Copyright, Links, Credits } from './Footer.styles.jsx'
 import { ReactComponent as EmailImg } from '../../assets/icons/email.svg'
 import { ReactComponent as FacebookImg } from '../../assets/icons/facebook.svg'
 import { ReactComponent as InstagramImg } from '../../assets/icons/instagram.svg'
-import { EMAIL } from '../../env.js'
 
 const Footer = () => (
 	<FooterContainer>
@@ -13,7 +12,7 @@ const Footer = () => (
 		<Links>
 			<ul>
 				<li>
-					<a href={`mailto:${EMAIL}`}>
+					<a href={`mailto:${process.env.REACT_APP_MAIN_EMAIL}`}>
 						<EmailImg />
 					</a>
 				</li>

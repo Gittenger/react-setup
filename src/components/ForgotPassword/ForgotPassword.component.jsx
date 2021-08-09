@@ -9,7 +9,6 @@ import {
 } from './ForgotPassword.styles'
 
 import CIndex from '../components.index.js'
-import { API } from '../../env.js'
 
 const ForgotPassword = () => {
 	const { TComp } = CIndex
@@ -19,13 +18,13 @@ const ForgotPassword = () => {
 
 	const { email, error, successMsg } = values
 
-	const handleChange = (e) => {
+	const handleChange = e => {
 		setValues({ ...values, email: e.target.value })
 	}
 
-	const handleSubmit = (e) => {
+	const handleSubmit = e => {
 		e.preventDefault()
-		fetch(`${API}/users/forgotPassword`, {
+		fetch(`${process.env.REACT_APP_API}/users/forgotPassword`, {
 			method: 'POST',
 			headers: {
 				Accept: 'application/json',
@@ -33,8 +32,8 @@ const ForgotPassword = () => {
 			},
 			body: JSON.stringify({ email }),
 		})
-			.then((res) => res.json())
-			.then((res) => {
+			.then(res => res.json())
+			.then(res => {
 				if (res.error) {
 					setValues({ ...values, error: res.message })
 				} else {
@@ -45,14 +44,13 @@ const ForgotPassword = () => {
 					})
 				}
 			})
-			.catch((err) => console.error(err))
+			.catch(err => console.error(err))
 	}
 
 	return (
 		<ForgotPasswordContainer>
 			<P>
-				Submit your email now to send a link to yourself for resetting your
-				password
+				Submit your email now to send a link to yourself for resetting your password
 			</P>
 			<Form>
 				<label for="email">Email:</label>

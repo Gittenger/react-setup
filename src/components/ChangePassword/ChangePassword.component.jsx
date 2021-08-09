@@ -9,7 +9,6 @@ import {
 
 import CIndex from '../components.index.js'
 import auth from '../../utils/auth.js'
-import { API } from '../../env.js'
 
 const { checkAuthToken } = auth
 
@@ -24,25 +23,20 @@ const ChangePassword = () => {
 		error: '',
 		successMsg: '',
 	})
-	const {
-		password,
-		passwordConfirm,
-		currentPassword,
-		error,
-		successMsg,
-	} = values
+	const { password, passwordConfirm, currentPassword, error, successMsg } =
+		values
 
 	const { token } = checkAuthToken()
 
-	const handleChange = (name) => (e) => {
+	const handleChange = name => e => {
 		setValues({
 			...values,
 			[name]: e.target.value,
 		})
 	}
 
-	const handleSubmit = (e) => {
-		fetch(`${API}/users/updatePassword`, {
+	const handleSubmit = e => {
+		fetch(`${process.env.API}/users/updatePassword`, {
 			method: 'PATCH',
 			headers: {
 				Accept: 'application/json',
@@ -51,8 +45,8 @@ const ChangePassword = () => {
 			},
 			body: JSON.stringify({ password, passwordConfirm, currentPassword }),
 		})
-			.then((res) => res.json())
-			.then((res) => {
+			.then(res => res.json())
+			.then(res => {
 				if (res.error) {
 					setValues({ ...values, error: res.message })
 				} else {
@@ -63,7 +57,7 @@ const ChangePassword = () => {
 					})
 				}
 			})
-			.catch((err) => console.error(err))
+			.catch(err => console.error(err))
 	}
 
 	return (
