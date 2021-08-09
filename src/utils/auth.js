@@ -1,8 +1,6 @@
-import { API } from '../env'
-
 export const auth = {
   authUser: function (user = {}, options) {
-    return fetch(`${API}/users/${options.authRoute}`, {
+    return fetch(`${process.env.REACT_APP_API}/users/${options.authRoute}`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -16,7 +14,7 @@ export const auth = {
   },
   logout: function () {
     localStorage.removeItem('jwt')
-    return fetch(`${API}/users/logout`, {
+    return fetch(`${process.env.REACT_APP_API}/users/logout`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
