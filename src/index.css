@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	@font-face {
+		font-family: 'Georama';
+		src: url('./assets/fonts/georama/Georama-Regular.ttf') format('truetype');
+		font-weight: 500;
+		font-style: normal;
+	}
+
+	@font-face {
+		font-family: 'Georama';
+		src: url('./assets/fonts/georama/Georama-Bold.ttf') format('truetype');
+		font-weight: 700;
+		font-style: normal;
+	}
+}
+
+@layer components {
+	.tailwind-component {
+		@apply hover:text-purple-700 cursor-pointer text-xl font-medium text-black;
+	}
+
+	.custom-colored {
+		@apply text-blue-600;
+	}
+
+	.my-btn {
+		@apply py-2 px-4 font-semibold font-button rounded shadow-md text-white bg-gray-800 hover:bg-gray-200 hover:text-black;
+	}
+
+	.my-btn-blue {
+		@apply bg-blue-700 hover:text-blue-700;
+	}
+
+	.my-btn-green {
+		@apply bg-green-700 hover:text-green-700;
+	}
+}
